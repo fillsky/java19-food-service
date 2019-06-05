@@ -2,11 +2,13 @@ package com.github.fillsky;
 
 public class CashDesk {
 
-    private Manager manager = new Manager();
+    //private Manager manager = new Manager();
 
-    public String createOrder(String foodName){
+    public void createOrder(String foodName){
 
-        return foodName;
+        System.out.println("Zamównie przyjęte ");
+        Manager.createOrder(foodName);
+
 
     }
 }
