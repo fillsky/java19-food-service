@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) throws IOException {
 
-
+        String input = "1";
         Kitchen kitchen = new Kitchen();
         FoodGiver foodGiver = new FoodGiver();
         CashDesk cashDesk = new CashDesk();
@@ -19,11 +19,12 @@ public class App {
         foodGiver.setManager(manager);
         cashDesk.setManager(manager);
 
-        while (true) {
+        while (input != null) {
+            input = JOptionPane.showInputDialog("Order Name: ");
+            manager.newOrder(input);
             System.out.println("Press Enter to send new order");
             //System.in.read();
-            String input = JOptionPane.showInputDialog("Order Name: ");
-            manager.newOrder(input);
+
         }
 
 
