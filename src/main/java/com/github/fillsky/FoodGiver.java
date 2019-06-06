@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 public class FoodGiver {
 
-    //Manager manager = new Manager();
+    private Manager manager;
 
     public void callClient(Beeper beeper) {
         System.out.println("Zapraszam po odbiór zamówienie " + beeper.getUuid());
@@ -17,13 +17,18 @@ public class FoodGiver {
 
         if (taken) {
             beeper.setOrderTakenAt(LocalDateTime.now().plusMinutes(15));
-            Manager.orderTaken(beeper);
+            manager.orderTaken(beeper);
 
         } else {
             System.out.println("Jedzenie nie odebrane");
-            beeper.setTaken(false);
+            beeper.setOrderTakenAt(null);
 
         }
 
+
+    }
+
+    public void setManager(Manager manager) {
+        this.manager = manager;
     }
 }

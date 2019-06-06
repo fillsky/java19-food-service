@@ -2,35 +2,38 @@ package com.github.fillsky;
 
 import java.time.format.DateTimeFormatter;
 
-public abstract class Manager {
+public class Manager {
 
-    //private Kitchen kitchen = new Kitchen();
-    //private FoodGiver foodGiver = new FoodGiver();
-    //private CashDesk cashDesk = new CashDesk();
+    public Manager(Kitchen kitchen, FoodGiver foodGiver, CashDesk cashDesk) {
+        this.kitchen = kitchen;
+        this.foodGiver = foodGiver;
+        this.cashDesk = cashDesk;
+    }
+
+    private Kitchen kitchen;
+    private FoodGiver foodGiver;
+    private CashDesk cashDesk;
     private static DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyy, HH:mm:ss");
 
-    public static void newOrder(String string) {
-        CashDesk cashDesk = new CashDesk();
+    public void newOrder(String string) {
         System.out.println("Utworzono nowe zamówienie ");
         cashDesk.createOrder(string);
     }
 
-    public static void createOrder(String orderName) {
+    public void createOrder(String orderName) {
 
         Beeper beeper = new Beeper(orderName);
-        Kitchen kitchen = new Kitchen();
         kitchen.makeOrder(beeper);
 
     }
 
-    public static void giveFinishedOrder(Beeper beeper) {
+    public void giveFinishedOrder(Beeper beeper) {
 
-        FoodGiver foodGiver = new FoodGiver();
         foodGiver.callClient(beeper);
 
     }
 
-    public static void orderTaken(Beeper beeper) {
+    public void orderTaken(Beeper beeper) {
         System.out.println("Jedzenie odebrane " + beeper.getUuid());
         System.out.println("Nazwa " + beeper.getOrderName());
         System.out.println("Godzna przyjęcia zamówienia " + beeper.getOrderedAt().format(dateTimeFormatter));

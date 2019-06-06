@@ -6,10 +6,20 @@ import java.io.IOException;
 public class App {
     public static void main(String[] args) throws IOException {
 
-        //Manager manager = new Manager();
+        Kitchen kitchen = new Kitchen();
+        FoodGiver foodGiver = new FoodGiver();
+        CashDesk cashDesk = new CashDesk();
+
+        Manager manager = new Manager(kitchen, foodGiver, cashDesk);
+
+        kitchen.setManager(manager);
+        foodGiver.setManager(manager);
+        cashDesk.setManager(manager);
 
         System.in.read();
-        Manager.newOrder("Burger zielony");
+
+        manager.newOrder("Burger");
+
 
     }
 }

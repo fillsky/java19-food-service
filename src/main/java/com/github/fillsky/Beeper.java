@@ -11,11 +11,7 @@ public class Beeper {
     private LocalDateTime orderReadyAt;
     private LocalDateTime orderTakenAt;
     private String orderName;
-    private boolean taken;
 
-    public Beeper() {
-
-    }
 
     public Beeper(String orderName) {
 
@@ -68,7 +64,4 @@ public class Beeper {
         return orderName;
     }
 
-    public void setTaken(boolean taken) {
-        this.taken = taken;
-    }
 }
