@@ -1,19 +1,22 @@
 package com.github.fillsky;
 
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Manager {
+
+    private Kitchen kitchen;
+    private FoodGiver foodGiver;
+    private CashDesk cashDesk;
+    private static DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyy, HH:mm:ss");
+    private List<Beeper> beepers = new ArrayList<>();
 
     public Manager(Kitchen kitchen, FoodGiver foodGiver, CashDesk cashDesk) {
         this.kitchen = kitchen;
         this.foodGiver = foodGiver;
         this.cashDesk = cashDesk;
     }
-
-    private Kitchen kitchen;
-    private FoodGiver foodGiver;
-    private CashDesk cashDesk;
-    private static DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyy, HH:mm:ss");
 
     public void newOrder(String string) {
         System.out.println("Utworzono nowe zamówienie ");
@@ -23,6 +26,7 @@ public class Manager {
     public void createOrder(String orderName) {
 
         Beeper beeper = new Beeper(orderName);
+        beepers.add(beeper);
         kitchen.makeOrder(beeper);
 
     }
@@ -41,4 +45,7 @@ public class Manager {
         System.out.println("Godzina wydania " + beeper.getOrderTakenAt().format(dateTimeFormatter));
     }
 
+    public List<Beeper> getBeepers() {
+        return beepers;
+    }
 }
