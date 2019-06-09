@@ -10,12 +10,13 @@ public class Beeper {
     private LocalDateTime orderedAt;
     private LocalDateTime orderReadyAt;
     private LocalDateTime orderTakenAt;
-    private String orderName;
+    //private String orderName;
+    private FoodType foodType;
 
 
     public Beeper(String orderName) {
 
-        this.orderName = orderName;
+        foodType = FoodType.valueOf(orderName);
         orderedAt = LocalDateTime.now();
 
     }
@@ -60,8 +61,7 @@ public class Beeper {
         return orderTakenAt;
     }
 
-    public String getOrderName() {
-        return orderName;
+    public FoodType getFoodType() {
+        return foodType;
     }
-
 }

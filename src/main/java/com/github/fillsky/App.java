@@ -19,6 +19,14 @@ public class App {
         foodGiver.setManager(manager);
         cashDesk.setManager(manager);
 
+        FoodType frytki = FoodType.FRYTKI;
+        System.out.println(frytki.getPreparationDurationMilis());
+        FoodType burger = FoodType.BURGER;
+
+        for (FoodType value : FoodType.values()) {
+            System.out.println(value);
+
+        }
         while (input != null) {
             input = JOptionPane.showInputDialog("Order Name: ");
             manager.newOrder(input);

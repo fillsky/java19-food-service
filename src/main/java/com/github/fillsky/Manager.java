@@ -39,7 +39,7 @@ public class Manager {
 
     public void orderTaken(Beeper beeper) {
         System.out.println("Jedzenie odebrane " + beeper.getUuid());
-        System.out.println("Nazwa " + beeper.getOrderName());
+        System.out.println("Nazwa " + beeper.getFoodType());
         System.out.println("Godzna przyjęcia zamówienia " + beeper.getOrderedAt().format(dateTimeFormatter));
         System.out.println("Godznia przygotowania " + beeper.getOrderReadyAt().format(dateTimeFormatter));
         System.out.println("Godzina wydania " + beeper.getOrderTakenAt().format(dateTimeFormatter));
