@@ -16,7 +16,13 @@ public class Beeper {
 
     public Beeper(String orderName) {
 
-        foodType = FoodType.valueOf(orderName);
+        try {
+            foodType = FoodType.valueOf(orderName);
+        } catch (IllegalArgumentException e){
+            System.out.println("Niepoprawny argument");
+            throw  new RuntimeException("Invalid enum: "+e.getMessage() + " : " +orderName );
+        }
+
         orderedAt = LocalDateTime.now();
 
     }
