@@ -3,7 +3,6 @@ package com.github.fillsky;
 
 import javax.swing.*;
 import java.io.IOException;
-import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) throws IOException {
@@ -27,13 +26,27 @@ public class App {
             System.out.println(value);
 
         }
-        while (input != null) {
+
+        manager.readFromFile();
+        for (int i = 0; i < 5; i++) {
             input = JOptionPane.showInputDialog("Order Name: ");
-            manager.newOrder(input);
+
+            try {
+                FoodType food = FoodType.fromStringIgnoreCase(input);
+                manager.newOrder(food.toString());
+
+            } catch (IllegalFoodException e) {
+                e.printStackTrace();
+            }
+
             System.out.println("Press Enter to send new order");
             //System.in.read();
 
         }
+        //manager.saveToFile();
+//        System.in.read();
+//        manager.saveToFile();
+//        System.out.println(manager.getBeepers().toString());
 
 
     }

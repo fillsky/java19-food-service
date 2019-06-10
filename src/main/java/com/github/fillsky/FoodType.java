@@ -1,7 +1,11 @@
 package com.github.fillsky;
 
 public enum FoodType {
-    BURGER(30000), FRYTKI(10000), ZIALSKO(5000), NACHOSY(3000), SERUS(20000);
+    BURGER(30000),
+    FRYTKI(10000),
+    ZIELSKO(5000),
+    NACHOSY(3000),
+    SERUS(20000);
 
     private int preparationDurationMilis;
 
@@ -11,5 +15,14 @@ public enum FoodType {
 
     public int getPreparationDurationMilis() {
         return preparationDurationMilis;
+    }
+
+    public static FoodType fromStringIgnoreCase(String name) {
+        for (FoodType value : values()) {
+            if (value.name().equalsIgnoreCase(name)) {
+                return value;
+            }
+        }
+        throw new IllegalFoodException();
     }
 }

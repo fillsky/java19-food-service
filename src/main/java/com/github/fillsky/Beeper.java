@@ -27,6 +27,7 @@ public class Beeper {
 
     }
 
+
     public String getUuid() {
         return uuid;
     }
@@ -46,6 +47,14 @@ public class Beeper {
         //return super.equals(obj);
     }
 
+    @Override
+    public String toString() {
+        return uuid + ";" +
+                orderedAt.format(Manager.dateTimeFormatter) + ";" +
+                orderReadyAt.format(Manager.dateTimeFormatter) + ";" +
+                orderTakenAt.format(Manager.dateTimeFormatter)+ ";" +
+                foodType + ";";
+    }
 
     public void setOrderReadyAt(LocalDateTime orderReadyAt) {
         this.orderReadyAt = orderReadyAt;

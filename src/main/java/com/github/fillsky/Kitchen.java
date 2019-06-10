@@ -28,7 +28,7 @@ public class Kitchen {
             timer.schedule(mealPrep, delay);
 
         } else {
-            timer.schedule(mealPrep, 5000);
+            timer.schedule(mealPrep, 3000);
         }
 
 
