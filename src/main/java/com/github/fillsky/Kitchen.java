@@ -20,7 +20,7 @@ public class Kitchen {
 
         beepers.add(beeper);
         int que = beepers.size();
-        int delay = que*2000;
+        int delay = beeper.getFoodType().getPreparationDurationMilis()/10;
 
         if (que > 3) {
             System.out.println("W kolejce jest " + que + " posiłków");
@@ -28,7 +28,7 @@ public class Kitchen {
             timer.schedule(mealPrep, delay);
 
         } else {
-            timer.schedule(mealPrep, 3000);
+            timer.schedule(mealPrep, 300);
         }
 
 

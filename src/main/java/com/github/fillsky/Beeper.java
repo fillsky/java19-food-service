@@ -6,13 +6,16 @@ import java.util.UUID;
 
 public class Beeper {
 
-    private final String uuid = UUID.randomUUID().toString();
+    private String uuid = UUID.randomUUID().toString();
     private LocalDateTime orderedAt;
     private LocalDateTime orderReadyAt;
     private LocalDateTime orderTakenAt;
     //private String orderName;
     private FoodType foodType;
 
+    public Beeper() {
+
+    }
 
     public Beeper(String orderName) {
 
@@ -56,6 +59,18 @@ public class Beeper {
                 foodType + ";";
     }
 
+    public Beeper fromString(String string){
+
+        String [] s = string.split(";");
+        Beeper beeper = new Beeper(s[4]);
+        beeper.setOrderTakenAt(LocalDateTime.parse(s[3], Manager.dateTimeFormatter));
+        beeper.setOrderReadyAt(LocalDateTime.parse(s[2], Manager.dateTimeFormatter));
+        beeper.setOrderedAt(LocalDateTime.parse(s[1], Manager.dateTimeFormatter));
+        beeper.setUuid(s[0]);
+        return beeper;
+
+    }
+
     public void setOrderReadyAt(LocalDateTime orderReadyAt) {
         this.orderReadyAt = orderReadyAt;
     }
@@ -79,4 +94,13 @@ public class Beeper {
     public FoodType getFoodType() {
         return foodType;
     }
+
+    public void setOrderedAt(LocalDateTime orderedAt) {
+        this.orderedAt = orderedAt;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
+
 }

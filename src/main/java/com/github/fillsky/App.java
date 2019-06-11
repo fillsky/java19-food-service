@@ -27,8 +27,9 @@ public class App {
 
         }
 
-        manager.readFromFile();
-        for (int i = 0; i < 5; i++) {
+        manager.openBeepersFromFile();
+        System.out.println(manager.getBeepers());
+        for (int i = 0; i < 10; i++) {
             input = JOptionPane.showInputDialog("Order Name: ");
 
             try {
@@ -43,7 +44,9 @@ public class App {
             //System.in.read();
 
         }
-        //manager.saveToFile();
+
+        manager.saveBeepersToFile();
+
 //        System.in.read();
 //        manager.saveToFile();
 //        System.out.println(manager.getBeepers().toString());
