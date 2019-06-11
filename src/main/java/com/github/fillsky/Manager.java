@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
@@ -67,10 +68,16 @@ public class Manager {
 
             String str;
             while ((str = fileReader.readLine()) != null) {
-                for (String s : str.split(";")) {
+
+                String [] s = str.split(";");
+                Beeper beeper = new Beeper(s[3]);
+                beeper.setOrderTakenAt(LocalDateTime.parse(s[1]));
+               /* for (String s : str.split(";")) {
                     System.out.println(s);
 
-                }
+
+                }*/
+                System.out.println(str);
             }
 
 
