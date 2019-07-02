@@ -1,14 +1,18 @@
+
 package com.github.fillsky;
 
+import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class FileOperator {
 
-    private String filePath = "D:\\Beeper\\";
+    private static String filePath = "D:\\Beeper\\";
     private static String fileName;
     private FileWriter fileWriter = null;
     private BufferedReader fileReader = null;
@@ -18,7 +22,7 @@ public class FileOperator {
 
     }
 
-    public boolean createFile() throws IOException {
+    private boolean createFile() throws IOException {
         fileName = "data_" + LocalDateTime.now().format(dateTimeFormatter) + ".bep";
         File file = new File(filePath + fileName);
 
@@ -39,10 +43,11 @@ public class FileOperator {
     public List<Beeper> openFile() throws IOException {
 
         List<Beeper> beepers = new ArrayList<>();
+        File file = openFileChooser();
 
         try {
 
-            fileReader = new BufferedReader(new FileReader("D:\\Beeper\\data.bep"));
+            fileReader = new BufferedReader(new FileReader(file));
 
             String str;
             while ((str = fileReader.readLine()) != null) {
@@ -84,6 +89,22 @@ public class FileOperator {
         }
 
 
+    }
+
+    private File openFileChooser() {
+
+        final JFileChooser fc = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter(
+                ".bep files", "bep");
+        File file = fc.getSelectedFile();
+        fc.setFileFilter(filter);
+
+        int returnVal = fc.showOpenDialog(null);
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            System.out.println("You chose to open this file: " +
+                    fc.getSelectedFile().getName());
+        }
+        return file;
     }
 
 

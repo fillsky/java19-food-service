@@ -27,7 +27,8 @@ public class App {
 
         }
 
-        manager.openBeepersFromFile();
+        //manager.openBeepersFromFile();
+
         System.out.println(manager.getBeepers());
         for (int i = 0; i < 10; i++) {
             input = JOptionPane.showInputDialog("Order Name: ");
