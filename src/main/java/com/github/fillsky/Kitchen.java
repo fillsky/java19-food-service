@@ -43,6 +43,10 @@ public class Kitchen {
 
     }
 
+    public List<Beeper> getBeepers() {
+        return beepers;
+    }
+
     public void setManager(Manager manager) {
         this.manager = manager;
     }

@@ -7,7 +7,8 @@ import java.io.IOException;
 public class App {
     public static void main(String[] args) throws IOException {
 
-        String input = "1";
+        UserCommands.mainMenu();
+        /*String input = "1";
         Kitchen kitchen = new Kitchen();
         FoodGiver foodGiver = new FoodGiver();
         CashDesk cashDesk = new CashDesk();
@@ -27,7 +28,7 @@ public class App {
 
         }
 
-        //manager.openBeepersFromFile();
+        manager.openBeepersFromFile();
 
         System.out.println(manager.getBeepers());
         for (int i = 0; i < 10; i++) {
@@ -51,8 +52,9 @@ public class App {
 //        System.in.read();
 //        manager.saveToFile();
 //        System.out.println(manager.getBeepers().toString());
+        System.exit(0);
 
-
+    */
     }
 }
 

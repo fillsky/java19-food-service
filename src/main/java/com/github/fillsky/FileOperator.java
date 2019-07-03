@@ -44,7 +44,7 @@ public class FileOperator {
 
         List<Beeper> beepers = new ArrayList<>();
         File file = openFileChooser();
-
+        System.out.println(file.getName());
         try {
 
             fileReader = new BufferedReader(new FileReader(file));
@@ -62,6 +62,7 @@ public class FileOperator {
                 fileReader.close();
             }
         }
+        System.out.println();
         return beepers;
 
     }
@@ -96,13 +97,15 @@ public class FileOperator {
         final JFileChooser fc = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter(
                 ".bep files", "bep");
-        File file = fc.getSelectedFile();
+
         fc.setFileFilter(filter);
 
         int returnVal = fc.showOpenDialog(null);
+        File file = fc.getSelectedFile();
         if (returnVal == JFileChooser.APPROVE_OPTION) {
+
             System.out.println("You chose to open this file: " +
-                    fc.getSelectedFile().getName());
+                    file.getName());
         }
         return file;
     }
