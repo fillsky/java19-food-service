@@ -24,5 +24,6 @@ public enum FoodType {
             }
         }
         throw new IllegalFoodException();
+
     }
 }

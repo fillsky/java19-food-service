@@ -49,17 +49,29 @@ public class Manager {
         System.out.println("Godznia przygotowania " + beeper.getOrderReadyAt().format(dateTimeFormatter));
         System.out.println("Godzina wydania " + beeper.getOrderTakenAt().format(dateTimeFormatter));
 
+
     }
 
 
 
 
     public void openBeepersFromFile() throws IOException {
+
         this.beepers = fileOperator.openFile();
     }
 
     public void saveBeepersToFile() throws IOException{
-        fileOperator.saveFile(beepers);
+        if (!foodGiver.isAnyFoodWaiting() && kitchen.getBeepers().isEmpty()) {
+            fileOperator.saveFile(beepers);
+        }
+        else {
+            System.out.println("Nie można zapisać");
+            System.out.println("Naciśnij enter aby spróbować ponownie");
+            System.in.read();
+            saveBeepersToFile();
+        }
+
+
     }
 
     public List<Beeper> getBeepers() {
